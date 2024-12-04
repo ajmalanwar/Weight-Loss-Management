@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Sign Up</h1>
+
+  <% if (message) { %>
+      <div class="alert alert-error">
+          <strong><%= message %></strong>
+      </div>
+  <% } %>
+
+  <% if (error) { %>
+      <div class="alert alert-error">
+          <ul>
+              <% Object.values(error).forEach(err => { %>
+                  <li><%= err.message %></li>
+              <% }); %>
+          </ul>
+      </div>
+  <% } %>
+
+  <form action="/signup" method="post">
+      <label>Email</label>
+      <input type="email" name="email" required>
+      <label>Password</label>
+      <input type="password" name="password" required>
+      <label>Confirm Password</label>
+      <input type="password" name="confirmPassword" required>
+      <button type="submit">Sign Up</button>
+  </form>
+</div>

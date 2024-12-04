@@ -1,0 +1,21 @@
+<nav>
+    <div class="logo">
+        <a href="/">Weight Tracker</a>
+    </div>
+    <div class="nav-links">
+        <% if (!user) { %> <!-- User not logged in -->
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Login</a>
+        <% } else { %> <!-- User logged in -->
+            <a href="/weights/create_weight">Create Weight</a>
+            <a href="/weights/retrieve_weight">List Weight</a>
+        <% } %>
+    </div>
+    <% if (user) { %>
+        <div class="logout-container">
+            <form action="/logout" method="post">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+    <% } %>
+</nav>

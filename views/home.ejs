@@ -1,0 +1,53 @@
+<div class="container">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h1>Welcome to Your Weight Loss Tracker</h1>
+        <% if (!user) { %> <!-- User is not logged in -->
+            <p>Your journey to better health starts here!</p>
+            <a href="/login">
+                <button class="cta-button">Start Your Journey</button>
+            </a>
+        <% } else { %> <!-- User is logged in -->
+            <h2>Hello, <%= user.email %>!</h2>
+            <p>Take control of your health and monitor your progress effectively.</p>
+            <div class="button-group">
+                <a href="/weights/create_weight">
+                    <button class="action-button">Create Weight Entry</button>
+                </a>
+                <a href="/weights/retrieve_weight">
+                    <button class="action-button">View Weight History</button>
+                </a>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="info-section">
+        <h2>Why Track Your Weight?</h2>
+        <p>Tracking your weight regularly helps you:</p>
+        <ul>
+            <li>Stay motivated and achieve your fitness goals.</li>
+            <li>Prevent and manage health conditions like obesity and diabetes.</li>
+            <li>Understand the impact of your lifestyle choices.</li>
+        </ul>
+
+        <h2>Benefits of Weight Loss</h2>
+        <p>Healthy weight loss can lead to:</p>
+        <ul>
+            <li>Better cardiovascular health and energy levels.</li>
+            <li>Improved mental well-being and confidence.</li>
+            <li>Reduced risk of chronic illnesses.</li>
+        </ul>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div class="cta-section">
+        <h2>Take the First Step Today!</h2>
+        <p>Join us to create a healthier version of yourself.</p>
+        <% if (!user) { %>
+            <a href="/signup">
+                <button class="cta-button">Sign Up</button>
+            </a>
+        <% } %>
+    </div>
+</div>

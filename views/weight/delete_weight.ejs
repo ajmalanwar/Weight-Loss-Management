@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Delete Weight Entry</h1>
+  
+    <p>Are you sure you want to delete the following weight entry?</p>
+    <p><strong>Weight:</strong> <%= weights.weight %> kg</p>
+    <p><strong>Date:</strong> <%= new Date(weights.date).toLocaleString() %></p>
+  
+    <form action="/weights/delete_weight/<%= weights._id %>" method="post">
+        <button type="submit" class="action-link delete">Yes, Delete</button>
+        <a href="/weights/retrieve_weight" class="action-link edit">No, Cancel</a>
+    </form>
+  </div>
+  

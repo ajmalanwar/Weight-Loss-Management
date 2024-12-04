@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Add Weight Entry</h1>
+
+  <% if (error) { %>
+      <div class="alert alert-error">
+          <strong><%= error.message %></strong>
+      </div>
+  <% } %>
+
+  <form action="/weights/create_weight" method="post">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" name="weight" step="0.1" required>
+      <button type="submit">Add Weight</button>
+  </form>
+</div>

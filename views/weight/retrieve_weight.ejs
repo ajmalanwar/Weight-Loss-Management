@@ -1,0 +1,69 @@
+<div class="container">
+  <h1>Weight List</h1>
+
+  <% if (data && data.length > 0) { %>
+      <table>
+          <thead>
+              <tr>
+                  <th>Weight (kg)</th>
+                  <th>Date & Time</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% data.forEach(weight => { %>
+                  <tr>
+                      <td><%= weight.weight %></td>
+                      <td><%= new Date(weight.date).toLocaleString() %></td>
+                      <td>
+                          <a href="/weights/update_weight/<%= weight._id %>" class="action-link edit" >Edit</a> |
+                          <a href="/weights/delete_weight/<%= weight._id %>" class="action-link delete">Delete</a>
+                      </td>
+                  </tr>
+              <% }); %>
+          </tbody>
+      </table>
+
+      <!-- Pagination Controls -->
+      <div class="pagination">
+          <% if (pagination.hasPrevPage) { %>
+              <a href="?page=1">First</a>
+              <a href="?page=<%= pagination.prevPage %>">Previous</a>
+          <% } %>
+
+          <% for (let i = 1; i <= pagination.totalPages; i++) { %>
+              <% if (pagination.page === i) { %>
+                  <strong><%= i %></strong>
+              <% } else { %>
+                  <a href="?page=<%= i %>"><%= i %></a>
+              <% } %>
+          <% } %>
+
+          <% if (pagination.hasNextPage) { %>
+              <a href="?page=<%= pagination.nextPage %>">Next</a>
+              <a href="?page=<%= pagination.totalPages %>">Last</a>
+          <% } %>
+      </div>
+
+      <!-- Weight Difference Calculation -->
+      <div class="container">
+          <h2>Calculate Weight Difference</h2>
+          <form id="weightDifferenceForm">
+              <label for="date1">Select Date 1:</label>
+              <input type="date" id="date1" name="date1" required>
+              
+              <label for="date2">Select Date 2:</label>
+              <input type="date" id="date2" name="date2" required>
+              
+              <button type="button" id="calculateDifferenceButton">Calculate Difference</button>
+          </form>
+      
+          <div id="weightDifferenceResult" class="ajax-result" style="display: none;" ></div>
+      
+          <!-- Include JavaScript -->
+          <script src="/javascripts/retrieve_weights.js"></script>
+      </div>
+  <% } else { %>
+      <p>No weights found.</p>
+  <% } %>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Update Weight</h1>
+
+  <% if (error) { %>
+      <div class="alert alert-error">
+          <strong>Error: <%= error.message %></strong>
+      </div>
+  <% } %>
+
+  <form action="/weights/update_weight/<%= weights._id %>" method="post">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" name="weight" value="<%= weights.weight %>" required>
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" value="<%= weights.date %>" required>
+      <button type="submit">Update Weight</button>
+      <a href="/weights/retrieve_weight" class="cancel-button">Cancel</a>
+  </form>
+</div>
